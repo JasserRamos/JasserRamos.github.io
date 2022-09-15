@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <button id="like" articleID="123456789">Like</button>
+    <script>
+      function setLike(articleID) {
+        document.cookie = articleID + "=y";
+      }
+
+      function hasLiked(articleID) {
+        var cookies = document.cookie.split(";");
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i].split("=");
+          if (cookie[0].trim() == articleID.trim()) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      var button = document.getElementById("like");
+      button.onclick = function () {
+        var articleID = this.getAttribute("articleID");
+        if (!hasLiked(articleID)) {
+          setLike(articleID);
+        } else {
+          alert("You cant like or dislike an article twice");
+        }
+      };
+    </script>
+  </head>
+  <body></body>
+</html>
