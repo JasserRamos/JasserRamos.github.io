@@ -21,12 +21,13 @@
         }
         return false;
       }
-
+      var likecount = 0;
       var button = document.getElementById("like");
       button.onclick = function () {
         var articleID = this.getAttribute("articleID");
         if (!hasLiked(articleID)) {
           setLike(articleID);
+          likecount++;
         } else {
           alert("You cant like or dislike an article twice");
         }
