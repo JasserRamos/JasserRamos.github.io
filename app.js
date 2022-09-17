@@ -1,55 +1,19 @@
-function cookieDate(d) {
-  function d2(n) {
-    return n < 10 ? "0" + n : n;
-  }
-  var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-    months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-
-  return (
-    "" +
-    days[d.getUTCDay()] +
-    ", " +
-    d2(d.getUTCDate()) +
-    "-" +
-    months[d.getUTCMonth()] +
-    "-" +
-    d.getUTCFullYear() +
-    " " +
-    d2(d.getUTCHours()) +
-    ":" +
-    d2(d.getUTCMinutes()) +
-    ":" +
-    d2(d.getUTCSeconds()) +
-    " GMT"
-  );
-}
 function setLike(articleID) {
-  var CookieDate = new Date();
-  const daysToExpire = new Date(2147483647 * 1000).toGMTString();
-  document.cookie =
-    articleID +
-    "=like; expires= Fri, 1 Jan 2038" +
-    ";max-age=" +
-    500 * 24 * 60 * 60 +
-    ";path=/";
-  alert(document.cookie);
+  var d = new Date();
+  d.setTime(d.getTime() + 3650 * 24 * 60 * 60 * 1000);
+  var expires = ";expires=" + d;
+  let maxAge = "; max-age=" + 3650 * 24 * 60 * 60;
+  var addDays = 3650;
+  var newDate = new Date();
+  newDate.setTime(newDate.getTime() + addDays * 24 * 60 * 60 * 1000);
+  var expiresInTime = "expires=" + newDate.toUTCString();
+  document.cookie = articleID + "=likes" + ";" + expiresInTime + ";path=/";
+  //document.cookie = articleID + "=idReporte;" + expires + maxAge;
+  //document.cookie = articleID + "=idReporte" + expires + maxAge + ";path=/";
 }
 
 function printCookies() {
-  alert(document.cookie.split(";"));
+  alert(document.cookie);
 }
 function resetCookies() {
   var allCookies = document.cookie.split(";");
@@ -57,7 +21,7 @@ function resetCookies() {
   // The "expire" attribute of every cookie is
   // Set to "Thu, 01 Jan 1970 00:00:00 GMT"
   for (var i = 0; i < allCookies.length; i++)
-    document.cookie = allCookies[i] + "=;expires=" + new Date(0).toUTCString();
+    document.cookie = allCookies[i] + "=;expires=" + new Date(0);
 }
 function hasLiked(articleID) {
   var cookies = document.cookie.split(";");
