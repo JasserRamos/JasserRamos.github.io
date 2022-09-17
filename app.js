@@ -1,5 +1,6 @@
 function setLike(articleID) {
-  document.cookie = articleID + "=y; expires=2147483647 ";
+  document.cookie =
+    articleID + "=y; expires=expires=Tue, 19 Jan 2038 03:14:07 UTC ";
 }
 
 function printCookies() {
