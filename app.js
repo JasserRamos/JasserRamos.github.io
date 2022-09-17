@@ -7,7 +7,7 @@ function setLike(articleID) {
   var newDate = new Date();
   newDate.setTime(newDate.getTime() + addDays * 24 * 60 * 60 * 1000);
   var expiresInTime = "expires=" + newDate.toUTCString();
-  document.cookie = articleID + "=likes" + ";" + expiresInTime + ";path=/";
+  document.cookie = articleID + "=idReporte" + ";" + expiresInTime + ";path=/";
   //document.cookie = articleID + "=idReporte;" + expires + maxAge;
   //document.cookie = articleID + "=idReporte" + expires + maxAge + ";path=/";
 }
