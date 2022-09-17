@@ -33,6 +33,6 @@ function awesomeClick(articleID) {
     likecount++;
     alert("se dio like ");
   } else {
-    alert("You cant like or dislike an article twice");
+    alert("No puedes darle like dos veces");
   }
 }
