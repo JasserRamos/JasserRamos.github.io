@@ -28,11 +28,10 @@ function hasLiked(articleID) {
 }
 var likecount = document.cookie.split(";").length;
 function awesomeClick(articleID) {
-  alert("alooo");
   if (!hasLiked(articleID)) {
     setLike(articleID);
     likecount++;
-    alert("se dio like " + likecount + " vez");
+    alert("se dio like ");
   } else {
     alert("You cant like or dislike an article twice");
   }
